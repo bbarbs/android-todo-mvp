@@ -1,0 +1,67 @@
+apply plugin: 'com.android.application'
+apply plugin: 'realm-android'
+//apply plugin: 'me.tatarka.retrolambda'
+
+android {
+    compileSdkVersion 26
+    defaultConfig {
+        applicationId "com.tokagestudio.todo"
+        minSdkVersion 19
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
+}
+
+ext {
+    androidSupportVersison = '26.1.0'
+    constrainLayoutVersion = '1.0.2'
+    junitVersion = '4.12'
+    testRunnerVersion = '1.0.1'
+    espressoVersion = '3.0.1'
+    dagger2Version = '2.15'
+    butterKnifeVersion = '8.8.1'
+    ioreactivexRxJava2 = '2.0.4'
+    ioreactivexRxAndroid = '2.0.1'
+    realmAdapters = '2.1.1'
+    realmFieldsHelper = '1.1.1'
+    mockitoVersion = '2.+'
+    robolectricVersion = '3.8'
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "com.android.support:appcompat-v7:${androidSupportVersison}"
+    implementation "com.android.support:support-v4:${androidSupportVersison}"
+    implementation "com.android.support.constraint:constraint-layout:${constrainLayoutVersion}"
+    implementation "com.android.support:design:${androidSupportVersison}"
+    implementation "com.google.dagger:dagger:${dagger2Version}"
+    implementation "com.jakewharton:butterknife:${butterKnifeVersion}"
+    implementation "io.reactivex.rxjava2:rxjava:${ioreactivexRxJava2}"
+    implementation "io.reactivex.rxjava2:rxandroid:${ioreactivexRxAndroid}"
+    implementation "io.realm:android-adapters:${realmAdapters}"
+    annotationProcessor "com.google.dagger:dagger-compiler:${dagger2Version}"
+    annotationProcessor "com.jakewharton:butterknife-compiler:${butterKnifeVersion}"
+    annotationProcessor "dk.ilios:realmfieldnameshelper:${realmFieldsHelper}"
+    testImplementation "junit:junit:${junitVersion}"
+    testImplementation "org.mockito:mockito-core:${mockitoVersion}"
+    testImplementation "org.robolectric:robolectric:${robolectricVersion}"
+    androidTestImplementation "com.android.support.test:runner:${testRunnerVersion}"
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:${espressoVersion}"
+}
